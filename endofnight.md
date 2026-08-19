@@ -49,6 +49,8 @@ Notes:
  - obs-req is due to positioning errors and turbulence (or just turbulence for non-functional robots)
  - act/req != 1 indicates a potential motor problem or collision
  - fvc_t,p will be NaN for the blind (exposure_iter=1) positioning performed before each cosmic split since there is no accompanying FVC image.
+ - fvc_t,p often equal pos_t,p as fallback values (and thus act_dt,dp often equal req_dt,dp), since `handle_fvc_feedback` rows with explicit angular feedback are only included in the moves database when offsets exceed a tolerance value (see [source code](https://desi.lbl.gov/trac/browser/code/online/Positioner/PetalApp/trunk/python/PetalApp/PetalApp.py?rev=146126#L1172)).
+    - For notes on obtaining measured angles even when offsets are small (using ptl_x,y), see [DESI-10172](https://desi.lbl.gov/DocDB/cgi-bin/private/ShowDocument?docid=10172).
 
 ### Summary Table
 
